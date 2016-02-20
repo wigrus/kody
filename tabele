@@ -1,0 +1,25 @@
+<?php
+
+$food = array('Zdrowe'=>
+						array('Salatka', 'Warzywa', 'Makaron'), 
+			  'Niezdrowe'=>
+						array('Pizza','Lody','Popcorn'));
+
+
+print_r($food);
+echo '</br>';
+echo $food['Niezdrowe'][0];
+echo '</br>';
+echo '</br>';
+
+foreach($food as $element => $innerArray)
+{
+	echo '<strong>'.$element.'</strong></br>';
+	foreach($innerArray as $item)
+	{
+		echo $item.'</br>';
+	}
+	echo '</br>';
+
+}
+?>
