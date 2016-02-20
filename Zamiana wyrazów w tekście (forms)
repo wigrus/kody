@@ -20,3 +20,44 @@ $stringnew = str_ireplace($znajdz,$zamien,$string);
 	<input type ="text" name="zamien"><br><br>
 	<input type="submit" value="Zatwierdz">
 </form>
+
+###########################################################################################
+// ZMIANIA CIĄGU ZNAKÓW W TEKŚCIE
+
+<?php
+
+$offset = 0;
+
+if (isset($_POST['tekst'])&&isset($_POST['wyszukaj'])&&isset($_POST['zamien'])&&!empty($_POST['tekst'])){
+	$string = $_POST['tekst'];
+	$znajdz = $_POST['wyszukaj'];
+	$zamien = $_POST['zamien'];
+	
+	$znajdzDlugosc = strlen($znajdz);
+	
+	if (!empty($string)&&!empty($znajdz)&&!empty($zamien)){
+		
+		while($pozycja = strpos($string, $znajdz, $offset)){
+			$offset = $pozycja+$znajdzDlugosc;
+			$string = substr_replace($string, $zamien, $pozycja, $znajdzDlugosc);
+		}
+		echo $string;
+	}
+}
+	else {
+		echo 'Wypełnij wszystkie pola.';
+	}
+
+
+?>
+
+<hr>
+<form action="index.php" method="POST">
+	<textarea name="tekst" rows="6" cols="60"></textarea><br><br>
+	Jakie slowo chcesz zamienic: <br>
+	<input type ="text" name="wyszukaj"><br><br>
+	Zamien na: <br>
+	<input type ="text" name="zamien"><br><br>
+	<input type="submit" value="Zatwierdz">
+</form>
+	
