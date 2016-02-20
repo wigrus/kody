@@ -1,0 +1,15 @@
+<?php
+
+$string = 'To jest jakis przykladowy tekst. Mam na Imie Lukasz!';
+$string2 = 'To jest jakis przykladowy tekst, mam na Imie Beniamin.      ';
+$liczSlowa = str_word_count($string, 1, '.!');
+$shuffle = str_shuffle($string);
+$half = substr($shuffle,0,strlen($string)/2);
+$reverse = strrev($string);
+similar_text($string, $string2, $podobienstwo);
+$righttrim = rtrim($string2);
+$slashe = htmlentities(addslashes($string));
+echo $slashe;
+
+
+?>
