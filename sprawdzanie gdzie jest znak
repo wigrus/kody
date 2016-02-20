@@ -1,0 +1,21 @@
+<?php
+
+if (isset($_GET['tekst'])&&!empty($_GET['tekst']))
+	echo $string = $_GET['tekst'].'<br>';
+
+	$offset = 0;
+	$znajdz = 'ja';
+	$dlugoscZnajdz = strlen($znajdz);
+	
+	while ($pozycja = strpos($string, $znajdz, $offset)){
+		echo '<strong>'.$znajdz.'</strong>'.' znajduje sie na pozycji: '.$pozycja.'<br>';
+		$offset = $pozycja+$dlugoscZnajdz;
+	}
+
+?>
+
+
+<form action="index.php" method="GET">
+			Name: <input type="text" name="tekst"><br><br>
+			<input type="submit" value="Submit">
+</form>
