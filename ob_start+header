@@ -1,0 +1,15 @@
+<?php
+ob_start();
+?>
+
+<h1>Moja Strona</h1>
+To moja stroja.
+
+<?php
+$redirect_page = 'http://www.o2.pl';
+$redirect = false;
+	if($redirect==true) {
+		header('Location: '.$redirect_page);
+	}
+ob_end_flush(); //flush wyswietla przechowywane w ob_start, clean daje czysta strone
+?>
