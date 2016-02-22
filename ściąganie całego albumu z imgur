@@ -1,0 +1,26 @@
+<?php
+set_time_limit(0);
+$config['target'] = 'http://imgur.com/a/Uxug4'; // [+18] Every Playboy Playmate Centerfold
+// Get raw HTML
+$data = file_get_contents($config['target']);
+// Get album ID
+$album_id = substr($config['target'], strrpos($config['target'], '/') + 1);
+// Get title
+preg_match('#<h1 class="post-title.*">(.*)</h1>#', $data, $matches);
+$title = $matches[1];
+// Grab images ID's
+preg_match_all('#<div id="([a-zA-Z0-9]{7})" class="post-image-container.*">#', $data, $matches);
+// Necessary things
+$path = './albums/'.$album_id.'/';
+mkdir($path);
+// Download images
+foreach($matches[1] as $image_id)
+{
+ if(file_exists($path.$image_id.'.jpg') === false)
+ {
+  file_put_contents($path.$image_id.'.jpg', file_get_contents('http://i.imgur.com/'.$image_id.'.jpg'));
+ }
+}
+
+echo 'Done!'; 
+?>
