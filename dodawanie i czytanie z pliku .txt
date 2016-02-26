@@ -1,0 +1,31 @@
+<?php
+
+if(isset($_POST['imie'])) {
+	$imie= $_POST['imie'];
+	if(!empty($imie)) {
+		$handle = fopen('names.txt', 'a');
+		fwrite($handle, $imie."\r\n");
+		fclose($handle);
+		
+		echo 'Lista imion w pliku names.txt: ';
+		$licznik = 1;
+		$reading = file('names.txt');
+		$reading_licznik = count($reading);
+		foreach($reading as $fname) {
+			echo trim($fname);
+			if($licznik<$reading_licznik) {
+				echo ', ';
+			}
+			$licznik++;
+		}
+	}else {
+		echo 'napisz cos';
+	}
+}
+?>
+
+<form action="index.php" method="POST">
+	Imie:<br>
+	<input type="text" name="imie"><br>
+	<input type="submit" value="Dodaj">
+</form>
