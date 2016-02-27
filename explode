@@ -1,0 +1,17 @@
+//w pliku names.txt "Łukasz, Karolina, Piotrek, Angelika"
+<?php
+
+$filename = 'names.txt';
+$handle = fopen($filename,'r');
+
+$datain = fread($handle, filesize($filename));
+$names_tablica = explode(",", $datain);
+
+echo $names_tablica[0].'<br><br>';
+
+foreach ($names_tablica as $name) {
+	echo $name.'<br>';
+}
+
+fclose($handle);
+?>
