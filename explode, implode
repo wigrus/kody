@@ -15,3 +15,11 @@ foreach ($names_tablica as $name) {
 
 fclose($handle);
 ?>
+
+
+<?php
+$names_tablica = array('Łukasz', 'Karolina', 'Andy');
+$string = implode(', ', $names_tablica);
+echo $string;
+?>
+
