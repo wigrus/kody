@@ -1,0 +1,14 @@
+<?php
+
+$filename_or = 'image.jpg';
+$filename = 'plik.txt';
+
+if(file_exists($filename)) {
+	echo 'plik istnieje';
+}else {
+	$handle = fopen($filename, 'w');
+	fwrite($handle, 'Nic');
+	fclose($handle);
+	echo 'plik dodano';
+}
+?>
