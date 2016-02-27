@@ -1,0 +1,26 @@
+<?php
+
+$name = $_FILES['plik']['name'];
+//$size = $_FILES['plik']['size'];
+//$type = $_FILES['plik']['type'];
+
+$tmp_name = $_FILES['plik']['tmp_name'];
+
+if (isset($name)) {
+	if(!empty($name)) {
+	$location = 'pliki/';
+	
+	if (move_uploaded_file($tmp_name, $location.$name)){
+	echo 'Dodano';
+	}
+	} else {
+		echo 'wybierz plik';
+	}
+}
+
+?>
+
+<form action="index.php" method="POST" enctype="multipart/form-data">
+	<input type="file" name="plik"><br><br>
+	<input type="submit" value="Zatwierdz">
+</form>
