@@ -1,0 +1,56 @@
+//FORMAT.php
+<?php
+
+function tekst(){
+	$imie = $_POST['imie'];
+	$rozmiar = $_POST['rozmiar'];
+	$pozycja = $_POST['pozycja'];
+	echo '<div style="font-size:'.$rozmiar.'" align="'.$pozycja.'">' .$imie. '</div>'; 
+}
+
+function tabela(){
+
+	$rozmiartab = $_POST['rozmiartab'];
+
+
+	echo "<table border='1'>";
+
+	for($tr=1;$tr<=$rozmiartab;$tr++){
+    
+		echo "<tr>";
+			for($td=1;$td<=$rozmiartab;$td++){
+				echo "<td align='center'>".$tr*$td."</td>";
+				}
+		echo "</tr>";
+}
+
+echo "</table>";
+}
+
+tabela();
+?>
+
+
+
+
+
+
+
+//FORM1.PHP
+<form action="format.php" method="post"  accept-charset="UTF-8">
+	Autor 
+	<input type ="text" name="imie"> 
+	<input type="submit" value="wyslij"><br>
+	<input type="radio" name="rozmiar" value="100px"> duzy;
+	<input type="radio" name="rozmiar" value="50px"> sredni;
+	<input type="radio" name="rozmiar" value="20px"> maly<br>
+	<input type="radio" name="pozycja" value="left"> z lewej;
+	<input type="radio" name="pozycja" value="center"> na srodku;
+	<input type="radio" name="pozycja" value="right"> z prawej<br>
+	<hr>
+	Wybierz rozmiar tabeli <br>
+	<input type="radio" name="rozmiartab" value="7"> 7x7<br>
+	<input type="radio" name="rozmiartab" value="9"> 9x9<br>
+	<input type="radio" name="rozmiartab" value="11"> 11x11<br>
+	<input type="radio" name="rozmiartab" value="13"> 13x13<br>
+</form>
