@@ -11,6 +11,8 @@ function tekst(){
 function tabela(){
 
 	$rozmiartab = $_POST['rozmiartab'];
+	$usmiech='<img src="smile.gif" alt="usmieszek" height="20" width="20">';
+	$kwiatek='<img src="kwiatek.gif" alt="Kwiatek" height="20" width="20">';
 
 
 	echo "<table border='1'>";
@@ -19,7 +21,9 @@ function tabela(){
     
 		echo "<tr>";
 			for($td=1;$td<=$rozmiartab;$td++){
-				echo "<td align='center'>".$tr*$td."</td>";
+				if($td==$rozmiartab){
+				echo "<td align='center'>".$usmiech."</td>";
+				}
 				}
 		echo "</tr>";
 }
@@ -29,11 +33,6 @@ echo "</table>";
 
 tabela();
 ?>
-
-
-
-
-
 
 
 //FORM1.PHP
