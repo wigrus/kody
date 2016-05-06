@@ -116,3 +116,42 @@ $counter = 0;
 
 </form>
 
+
+###############################################################
+------------------
+
+fmDodaj.php
+
+<form action=insert.php method=post>
+<input type=text name=frm_imie>Imie
+<br><input type=text name=frm_nazwisko>Nazwisko
+<br><input type=radio name=frm_plec value="K">K
+<input type=radio name=frm_plec value="M">M
+<br><input type=submit value="Dodaj">
+</form>
+
+---------------
+insert.php
+
+<?php 
+$db = new PDO('mysql:host=localhost;dbname=naszabaza','root','');
+
+$dodanie = $db -> prepare ('insert into tabela (nazwisko, imie, plec) values(:nazwisko,:imie,:plec)');
+$dodanie -> bindValue(':nazwisko',$_POST['frm_nazwisko']);
+$dodanie -> bindValue(':imie',$_POST['frm_imie']);
+$dodanie -> bindValue(':plec',$_POST['frm_plec']);
+$dodanie -> execute();
+?>
+
+-------------------
+select.php
+
+<?php
+error_reporting(E_ERROR);
+$db = new PDO('mysql:host=localhost;dbname=naszabaza','root','');
+foreach ($db -> query('select * from tabela') as $row){
+	echo $row[imie].' ',$row[nazwisko].'<br>';
+}
+
+
+#########################################################
